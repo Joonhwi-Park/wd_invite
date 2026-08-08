@@ -88,3 +88,15 @@ textarea,
   user-select: text;
   pointer-events: auto;
 }
+/* 키보드 포커스 시 테두리 박스가 커지면서 레이아웃 깨지는 현상 방지 */
+*:focus {
+  outline: none !important;
+}
+
+/* PC 브라우저 좌우 드래그 및 쏠림 방지 */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+}

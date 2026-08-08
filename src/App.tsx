@@ -17,19 +17,20 @@ export default function App() {
     
 
     
-    <div className="min-h-screen bg-[#F7F5F0] flex justify-center text-[#2A2A2A] font-serif antialiased">
-      {/* 모바일 캔버스 */}
-      <main className="w-full max-w-md bg-[#FFFDF9] min-h-screen shadow-2xl overflow-hidden flex flex-col my-0 sm:my-8 border-x border-[#EFEBE1]">
-        
-        {/* 커버 / 헤더 */}
-        <section className="px-0 pt-0 pb-16 text-center border-b border-[#EFEBE1]">
-          <div className="w-full overflow-hidden bg-[#F7F5F0]">
-            <img
-              src={poster1}
-              alt="Poster 1"
-              className="w-full h-auto object-contain"
-            />
-          </div>
+<div className="min-h-screen w-full bg-[#F7F5F0] flex justify-center items-start text-[#2A2A2A] font-serif antialiased relative overflow-x-hidden select-none">
+  {/* 모바일 캔버스 */}
+  <main className="w-full max-w-md bg-[#FFFDF9] min-h-screen shadow-2xl overflow-hidden flex flex-col my-0 sm:my-8 border-x border-[#EFEBE1] relative mx-auto shrink-0">
+    
+    {/* 커버 / 헤더 */}
+    <section className="px-0 pt-0 pb-16 text-center border-b border-[#EFEBE1]">
+      <div className="w-full overflow-hidden bg-[#F7F5F0]">
+        <img
+          src={poster1}
+          alt="Poster 1"
+          draggable="false"
+          className="w-full h-auto object-contain block pointer-events-none select-none"
+        />
+      </div>
 
           <div className="px-8 pt-16">
             <BgmPlayer />
