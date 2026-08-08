@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap");
+
+/* Local custom fonts */
+@font-face {
+  font-family: 'Flowmery';
+  src: url('./font/Flowmery-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EvasSignatures';
+  src: url('./font/Evas Signatures.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Babbler';
+  src: url('./font/Babbler.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: 'Nanum Myeongjo', serif;
+    background-color: #F7F5F0;
+    color: #2A2A2A;
+  }
+
+  .font-english {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-flowmery {
+    font-family: 'Flowmery', sans-serif;
+  }
+
+  .font-evas {
+    font-family: 'EvasSignatures', cursive;
+  }
+
+  .font-babbler {
+    font-family: 'Babbler', serif;
+  }
+}
+/* ===================================================
+   모바일 청첩장 불법 복사 및 터치 확대 방지 설정 (index.css 전용)
+   =================================================== */
+
+/* 1. 사이트 전체: 꾹 누르기 메뉴 & 드래그 선택 & 터치 확대 방지 */
+body {
+  /* 아이폰/갤럭시 등에서 꾹 눌렀을 때 이미지 저장/복사 팝업 메뉴 차단 */
+  -webkit-touch-callout: none;
+  
+  /* 텍스트 및 이미지 드래그하여 영역 잡는 행위 방지 */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* 모바일 두 손가락 확대(핀치 줌) 및 두 번 터치 확대 동작 제한 */
+  touch-action: pan-x pan-y;
+}
+
+/* 2. 이미지 전용: 꾹 눌러서 사진 저장하는 행위 원천 차단 */
+img {
+  -webkit-touch-callout: none;
+  /* 이미지 터치 이벤트 자체를 무시하도록 만들어 우클릭/장시간 터치 메뉴 차단 */
+  pointer-events: none;
+}
+
+/* 3. 예외 처리: 계좌번호, 주소 등 사용자가 드래그/복사해야 하는 요소 */
+input, 
+textarea, 
+.selectable-text {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  pointer-events: auto;
+}
