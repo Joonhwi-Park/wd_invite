@@ -131,7 +131,7 @@ export default function App() {
   {/* 지도 이미지 구역 */}
   <div className="aspect-[4/2] bg-[#F2EDE4] rounded-sm flex items-center justify-center border border-[#E8E2D5] overflow-hidden mb-3">
     <img 
-      src="/image/location.jpg" 
+      src={`${import.meta.env.BASE_URL}image/location.jpg`} 
       alt="오시는 길 약도" 
       loading="lazy"
       decoding="async"

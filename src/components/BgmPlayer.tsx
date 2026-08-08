@@ -123,7 +123,7 @@ export default function BgmPlayer() {
 
   return (
     <>
-      <audio ref={audioRef} src="/small happyness.mp3" loop />
+      <audio ref={audioRef} src={`${import.meta.env.BASE_URL}small_happyness.mp3`} loop />
 
       {/* 우측 상단 플로팅 컨트롤러 */}
       <div className="fixed top-6 right-6 z-50 flex flex-col items-center">

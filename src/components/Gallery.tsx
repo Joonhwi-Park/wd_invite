@@ -1,12 +1,12 @@
 
 // public/image/ 폴더의 이미지 참조
 const galleryImages = [
-  { src: '/image/IMG_1.jpg', alt: '갤러리 사진 1' },
-  { src: '/image/IMG_2.jpg', alt: '갤러리 사진 2' },
-  { src: '/image/IMG_3.JPG', alt: '갤러리 사진 3' },
-  { src: '/image/IMG_4.JPG', alt: '갤러리 사진 4' },
-  { src: '/image/IMG_5.JPG', alt: '갤러리 사진 5' },
-  { src: '/image/IMG_6.JPG', alt: '갤러리 사진 6' },
+  { src: `${import.meta.env.BASE_URL}image/IMG_1.jpg`, alt: '갤러리 사진 1' },
+  { src: `${import.meta.env.BASE_URL}image/IMG_2.jpg`, alt: '갤러리 사진 2' },
+  { src: `${import.meta.env.BASE_URL}image/IMG_3.JPG`, alt: '갤러리 사진 3' },
+  { src: `${import.meta.env.BASE_URL}image/IMG_4.JPG`, alt: '갤러리 사진 4' },
+  { src: `${import.meta.env.BASE_URL}image/IMG_5.JPG`, alt: '갤러리 사진 5' },
+  { src: `${import.meta.env.BASE_URL}image/IMG_6.JPG`, alt: '갤러리 사진 6' },
 ];
 
 export default function Gallery() {
