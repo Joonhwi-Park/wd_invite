@@ -2,6 +2,7 @@ import { useState } from 'react';
 import BgmPlayer from './components/BgmPlayer';
 import poster1 from './image/poster1.jpg';
 import Gallery from './components/Gallery'; // 컴포넌트 경로에 맞게 조정해 주세요.
+import KakaoShareButton from './components/KakaoShareButton';
 
 export default function App() {
   const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
@@ -180,18 +181,18 @@ export default function App() {
           {/* 대중교통 상세 안내 */}
           <div className="text-left text-xs leading-relaxed text-[#4A423A] space-y-6 bg-[#F9F7F2] p-6 rounded-sm border border-[#ECE6DA]">
             <div>
-              <p className="font-semibold text-[#2A231C] text-sm mb-1">SUBWAY</p>
-              <p className="text-[#665B50]">4호선 미아사거리역 2번 출구 (도보 30분)</p>
+              <p className="font-semibold text-[#2A231C] text-sm mb-1">SUBWAY 지하철</p>
+              <p className="text-[#665B50]">4호선 미아사거리역 1번 출구 (도보 30분)</p>
             </div>
 
             <div>
-              <p className="font-semibold text-[#2A231C] text-sm mb-1">BUS</p>
+              <p className="font-semibold text-[#2A231C] text-sm mb-1">BUS 버스</p>
               <p className="text-[#665B50] font-medium">북서울꿈의숲 정류장 하차</p>
               <p className="text-[#807264] mt-0.5">강북09, 강북11</p>
             </div>
 
             <div>
-              <p className="font-semibold text-[#2A231C] text-sm mb-1">CAR PARK</p>
+              <p className="font-semibold text-[#2A231C] text-sm mb-1">CAR PARK 주차장</p>
               <p className="text-[#665B50]">북서울꿈의숲 동문주차장 / 서문주차장</p>
             </div>
           </div>
@@ -200,10 +201,11 @@ export default function App() {
 {/* 마음 전하실 곳 (계좌번호) */}
 <section className="px-6 sm:px-8 py-12 border-t border-[#EFEBE1] bg-[#F9F7F2]">
   <h2 className="font-english text-lg tracking-[0.15em] text-[#6B5E52] text-center mb-6">
-    Account Number
+    마음 전하실 곳
   </h2>
   <p className="text-xs text-[#807264] text-center mb-6 leading-relaxed">
-    축복의 마음을 담아 전해주실 수 있도록<br />계좌번호를 함께 안내해 드립니다.<br />
+    전해주시는 따뜻한 축하의 마음을
+오래도록 간직하며<br />행복한 모습으로 보답하며 살겠습니다.<br />
   </p>
 
   <div className="space-y-3 text-xs">
@@ -211,14 +213,13 @@ export default function App() {
     <div className="bg-white p-3.5 sm:p-4 rounded-sm border border-[#EAE3D5] shadow-sm">
       <div className="flex justify-between items-center">
         <div className="min-w-0 mr-2">
-          <span className="text-[#8C7A6B] block text-[0.7rem] mb-0.5">신랑측 계좌</span>
+          <span className="text-[#8C7A6B] block text-[0.7rem] mb-0.5">신랑 박준휘</span>
           <div className="flex items-center gap-1.5 flex-wrap sm:flex-nowrap">
             <span className="font-semibold text-[#2C251E] text-sm shrink-0">농협은행</span>
             <span className="font-english text-[#2C251E] text-xs sm:text-sm tracking-normal xs:tracking-[0.05em] sm:tracking-[0.1em] whitespace-nowrap">
               352-0637-4433-03
             </span>
           </div>
-          <span className="text-[#7A6C5F] block mt-0.5">예금주: 박준휘</span>
         </div>
         <button 
           onClick={() => handleCopy('3520637443303', 'groom')}
@@ -234,7 +235,7 @@ export default function App() {
           onClick={() => setShowGroomParents(!showGroomParents)}
           className="w-full flex items-center justify-between text-[0.75rem] text-[#8C7A6B] hover:text-[#5C5045] transition py-0.5"
         >
-          <span>신랑 측 부모님 계좌 보기</span>
+          <span>신랑 측 부모님</span>
           <span className="text-[0.65rem]">{showGroomParents ? '▲ 접기' : '▼ 펼치기'}</span>
         </button>
 
@@ -244,13 +245,12 @@ export default function App() {
             {/* 혼주 1 (예: 아버님) */}
             <div className="flex justify-between items-center text-xs">
               <div>
-                <span className="text-[#8C7A6B] block text-[0.65rem]">아버님</span>
-                <span className="font-semibold text-[#2C251E] text-xs">은행명 </span>
-                <span className="font-english text-[#2C251E] text-xs whitespace-nowrap">000-0000-0000-00</span>
-                <span className="text-[#7A6C5F] block text-[0.7rem]">예금주: 박 훈 </span>
+                <span className="text-[#8C7A6B] block text-[0.65rem]">아버님 박훈</span>
+                <span className="font-semibold text-[#2C251E] text-xs">신한은행 </span>
+                <span className="font-english text-[#2C251E] text-xs whitespace-nowrap">323-04-422684</span>
               </div>
               <button
-                onClick={() => handleCopy('00000000000000', 'groom_father')}
+                onClick={() => handleCopy('32304422684', 'groom_father')}
                 className="px-2 py-1 bg-white text-[#5C5045] rounded-sm hover:bg-[#F4EFE6] transition border border-[#DDD4C5] text-[0.7rem] shrink-0"
               >
                 {copiedAccount === 'groom_father' ? '복사됨' : '복사'}
@@ -260,13 +260,12 @@ export default function App() {
             {/* 혼주 2 (예: 어머님) */}
             <div className="flex justify-between items-center text-xs pt-2 border-t border-[#EFEBE1]">
               <div>
-                <span className="text-[#8C7A6B] block text-[0.65rem]">어머님</span>
-                <span className="font-semibold text-[#2C251E] text-xs">은행명 </span>
-                <span className="font-english text-[#2C251E] text-xs whitespace-nowrap">000-0000-0000-00</span>
-                <span className="text-[#7A6C5F] block text-[0.7rem]">예금주: 오정희 </span>
+                <span className="text-[#8C7A6B] block text-[0.65rem]">어머님 오정희</span>
+                <span className="font-semibold text-[#2C251E] text-xs">국민은행 </span>
+                <span className="font-english text-[#2C251E] text-xs whitespace-nowrap">074-24-0278-016</span>
               </div>
               <button
-                onClick={() => handleCopy('00000000000000', 'groom_mother')}
+                onClick={() => handleCopy('074240278016', 'groom_mother')}
                 className="px-2 py-1 bg-white text-[#5C5045] rounded-sm hover:bg-[#F4EFE6] transition border border-[#DDD4C5] text-[0.7rem] shrink-0"
               >
                 {copiedAccount === 'groom_mother' ? '복사됨' : '복사'}
@@ -281,14 +280,13 @@ export default function App() {
     <div className="bg-white p-3.5 sm:p-4 rounded-sm border border-[#EAE3D5] shadow-sm">
       <div className="flex justify-between items-center">
         <div className="min-w-0 mr-2">
-          <span className="text-[#8C7A6B] block text-[0.7rem] mb-0.5">신부측 계좌</span>
+          <span className="text-[#8C7A6B] block text-[0.7rem] mb-0.5">신부 송윤희</span>
           <div className="flex items-center gap-1.5 flex-wrap sm:flex-nowrap">
             <span className="font-semibold text-[#2C251E] text-sm shrink-0">국민은행</span>
             <span className="font-english text-[#2C251E] text-xs sm:text-sm tracking-normal xs:tracking-[0.05em] sm:tracking-[0.1em] whitespace-nowrap">
               289501-00-027526
             </span>
           </div>
-          <span className="text-[#7A6C5F] block mt-0.5">예금주: 송윤희</span>
         </div>
         <button 
           onClick={() => handleCopy('28950100027526', 'bride')}
@@ -314,10 +312,9 @@ export default function App() {
             {/* 혼주 1 (예: 아버님) */}
             <div className="flex justify-between items-center text-xs">
               <div>
-                <span className="text-[#8C7A6B] block text-[0.65rem]">아버님</span>
+                <span className="text-[#8C7A6B] block text-[0.65rem]">아버님 송기호</span>
                 <span className="font-semibold text-[#2C251E] text-xs">농협은행 </span>
                 <span className="font-english text-[#2C251E] text-xs whitespace-nowrap">352-1446-9857-03</span>
-                <span className="text-[#7A6C5F] block text-[0.7rem]">예금주: 송기호</span>
               </div>
               <button
                 onClick={() => handleCopy('3521446985703', 'bride_father')}
@@ -330,10 +327,9 @@ export default function App() {
             {/* 혼주 2 (예: 어머님) */}
             <div className="flex justify-between items-center text-xs pt-2 border-t border-[#EFEBE1]">
               <div>
-                <span className="text-[#8C7A6B] block text-[0.65rem]">어머님</span>
-                <span className="font-semibold text-[#2C251E] text-xs">은행명 </span>
+                <span className="text-[#8C7A6B] block text-[0.65rem]">어머님 박선숙</span>
+                <span className="font-semibold text-[#2C251E] text-xs">국민은행 </span>
                 <span className="font-english text-[#2C251E] text-xs whitespace-nowrap">681101-01-257300</span>
-                <span className="text-[#7A6C5F] block text-[0.7rem]">예금주: 박선숙 </span>
               </div>
               <button
                 onClick={() => handleCopy('68110101257300', 'bride_mother')}
@@ -349,8 +345,11 @@ export default function App() {
   </div>
 
   <p className="text-xs text-[#807264] text-center mb-6 leading-relaxed">
-     <br />화환은 정중히 사양하오니 <br />너그러운 마음으로 양해 부탁드립니다.
+     <br />야외 예식인 관계로 화환은 정중히 사양하오니 <br />너그러운 마음으로 양해 부탁드립니다.
   </p>
+<section className="px-6 py-8 bg-[#F7F5F0] border-t border-[#EFEBE1]">
+  <KakaoShareButton />
+</section>
 </section>
 
         <footer className="py-8 text-center text-[0.7rem] text-[#9E9082] bg-[#F4EFE6] border-t border-[#EAE3D5]">
