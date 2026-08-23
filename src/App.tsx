@@ -302,7 +302,7 @@ export default function App() {
           onClick={() => setShowBrideParents(!showBrideParents)}
           className="w-full flex items-center justify-between text-[0.75rem] text-[#8C7A6B] hover:text-[#5C5045] transition py-0.5"
         >
-          <span>신부 측 부모님 계좌 보기</span>
+          <span>신부 측 부모님</span>
           <span className="text-[0.65rem]">{showBrideParents ? '▲ 접기' : '▼ 펼치기'}</span>
         </button>
 

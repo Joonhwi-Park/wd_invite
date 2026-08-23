@@ -6,33 +6,28 @@ declare global {
   }
 }
 
-// ⚠️ 본인의 실제 JavaScript 키를 입력하세요 (플랫폼 키에 있는 32자리)
+// ⚠️ 실제 발급받으신 JavaScript 키
 const KAKAO_JS_KEY = 'a1aa9c8ba23dae4eb6c3f8817dd51f78';
 
 export default function KakaoShareButton() {
-  const [sdkReady, setSdkReady] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // 1. 이미 SDK가 로드되어 있는 경우
+    // 1. 이미 SDK가 로드되어 있는 경우 초기화
     if (window.Kakao) {
       if (!window.Kakao.isInitialized()) {
         window.Kakao.init(KAKAO_JS_KEY);
       }
-      setSdkReady(true);
       return;
     }
 
-    // 2. SDK가 없으면 동적으로 script 태그를 삽입하여 로드
+    // 2. 동적으로 script 태그 삽입하여 로드
     const script = document.createElement('script');
     script.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js';
     script.async = true;
     script.onload = () => {
-      if (window.Kakao) {
-        if (!window.Kakao.isInitialized()) {
-          window.Kakao.init(KAKAO_JS_KEY);
-        }
-        setSdkReady(true);
+      if (window.Kakao && !window.Kakao.isInitialized()) {
+        window.Kakao.init(KAKAO_JS_KEY);
       }
     };
     script.onerror = () => {
@@ -44,13 +39,12 @@ export default function KakaoShareButton() {
   const handleShare = () => {
     const pageUrl = 'https://joonhwi-park.github.io/wd_invite/';
 
-    // Kakao 객체 확인 및 초기화 재시도
+    // 초기화 상태 재확인
     if (window.Kakao && !window.Kakao.isInitialized()) {
       window.Kakao.init(KAKAO_JS_KEY);
     }
 
     if (!window.Kakao) {
-      // SDK가 끝내 차단/실패된 경우 복사로 폴백
       copyLink(pageUrl);
       return;
     }
@@ -59,10 +53,11 @@ export default function KakaoShareButton() {
       window.Kakao.Share.sendDefault({
         objectType: 'feed',
         content: {
-          title: '신랑 박준휘 🤍 신부 송윤희',
-          description: '소중한 시작을 함께 축복해 주세요.',
-          // ⚠️ og-image.jpg 또는 공개된 실제 이미지 절대경로
-          imageUrl: 'https://joonhwi-park.github.io/wd_invite/og-image.jpg',
+          title: '신랑 박준휘 ❤️ 신부 송윤희',
+          // 💡 줄바꿈(\n) 적용된 예식 상세 정보 (웨딩홀/시간 확인 후 필요시 텍스트 수정)
+          description: '10월 24일 (토) 오전 11시\n북서울꿈의숲 창녕위궁재사',
+          // ⚠️ public/image/poster1.jpg 실제 포스터 이미지 주소 연결
+          imageUrl: 'https://joonhwi-park.github.io/wd_invite/image/poster1.jpg',
           link: {
             mobileWebUrl: pageUrl,
             webUrl: pageUrl,
@@ -92,18 +87,21 @@ export default function KakaoShareButton() {
     });
   };
 
-return (
-  <button
-    onClick={handleShare}
-    className="w-full py-3.5 bg-[#FAF8F5] text-[#3D352E] font-serif text-sm rounded-lg flex items-center justify-center gap-2 border border-[#E8E2D5] shadow-sm hover:bg-[#F2EDE4] active:scale-[0.99] transition-all cursor-pointer"
-  >
-    {/* 카카오 아이콘 */}
-    <div className="w-5 h-5 rounded-full bg-[#FEE500] flex items-center justify-center">
-      <svg className="w-3 h-3 fill-[#191919]" viewBox="0 0 24 24">
-        <path d="M12 3C6.5 3 2 6.6 2 11c0 2.9 1.9 5.4 4.8 6.7l-1.2 4.5c-.1.4.3.7.6.5l5.3-3.5c.2 0 .3.1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/>
-      </svg>
-    </div>
-    <span className="tracking-wide">카카오톡으로 공유하기</span>
-  </button>
-);
+  return (
+    <button
+      onClick={handleShare}
+      type="button"
+      className="w-full py-3.5 bg-[#FAF8F5] text-[#3D352E] font-serif text-sm rounded-lg flex items-center justify-center gap-2 border border-[#E8E2D5] shadow-sm hover:bg-[#F2EDE4] active:scale-[0.99] transition-all cursor-pointer"
+    >
+      {/* 카카오 아이콘 */}
+      <div className="w-5 h-5 rounded-full bg-[#FEE500] flex items-center justify-center shrink-0">
+        <svg className="w-3 h-3 fill-[#191919]" viewBox="0 0 24 24">
+          <path d="M12 3C6.5 3 2 6.6 2 11c0 2.9 1.9 5.4 4.8 6.7l-1.2 4.5c-.1.4.3.7.6.5l5.3-3.5c.2 0 .3.1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/>
+        </svg>
+      </div>
+      <span className="tracking-wide">
+        {copied ? '링크 복사 완료' : '카카오톡으로 공유하기'}
+      </span>
+    </button>
+  );
 }
