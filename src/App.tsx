@@ -141,11 +141,11 @@ export default function App() {
     />
   </div>
 
-  {/* 내비게이션 / 지도 바로가기 버튼 3개 (클래식 모노톤 스타일) */}
-  <div className="grid grid-cols-3 gap-2 text-xs">
+  {/* 내비게이션 / 지도 바로가기 버튼 2개 */}
+  <div className="grid grid-cols-2 gap-2 text-xs">
     {/* 카카오맵 */}
     <a
-      href="https://map.kakao.com/link/search/서울특별시 강북구 월계로 173"
+      href="https://map.kakao.com/link/search/북서울꿈의숲 창녕위궁재사"
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center justify-center gap-1.5 py-2.5 bg-transparent text-[#5C5045] font-medium rounded-sm border border-[#DDD4C5] hover:bg-[#F4EFE6] transition shadow-xs"
@@ -154,26 +154,15 @@ export default function App() {
       <span>카카오맵</span>
     </a>
 
-    {/* 네이버 지도 */}
+    {/* 네이버 지도 (단일 장소 다이렉트 링크) */}
     <a
-      href="https://m.map.naver.com/search2/search.naver?query=서울특별시 강북구 월계로 173"
+      href="https://map.naver.com/p/search/서울%20창녕위궁%20재사"
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center justify-center gap-1.5 py-2.5 bg-transparent text-[#5C5045] font-medium rounded-sm border border-[#DDD4C5] hover:bg-[#F4EFE6] transition shadow-xs"
     >
       <span className="w-1.5 h-1.5 rounded-[1px] bg-[#03C75A] inline-block shrink-0" />
       <span>네이버지도</span>
-    </a>
-
-    {/* Tmap 내비게이션 */}
-    <a
-      href="https://tmap.co.kr/tmap2/mobile/route.jsp?name=서울특별시 강북구 월계로 173"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center justify-center gap-1.5 py-2.5 bg-transparent text-[#5C5045] font-medium rounded-sm border border-[#DDD4C5] hover:bg-[#F4EFE6] transition shadow-xs"
-    >
-      <span className="w-1.5 h-1.5 rounded-[1px] bg-[#0066FF] inline-block shrink-0" />
-      <span>티맵</span>
     </a>
   </div>
 </div>
@@ -188,7 +177,7 @@ export default function App() {
             <div>
               <p className="font-semibold text-[#2A231C] text-sm mb-1">BUS 버스</p>
               <p className="text-[#665B50] font-medium">북서울꿈의숲 정류장 하차</p>
-              <p className="text-[#807264] mt-0.5">강북09, 강북11</p>
+              <p className="text-[#807264] mt-0.5"> 100, 111, 147, 강북09, 강북11</p>
             </div>
 
             <div>
